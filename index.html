@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<style>
+    html {
+background-color: rgba(245, 245, 245, 0.616);
+}   
+
+.customPagination,
+.paginacaoCursor {
+margin: 5px;
+padding: 7px 9px;   
+
+color: #828282;
+
+cursor: pointer;
+}
+.customPagination:hover {
+color: black !important;
+background-color: #fff !important;
+border-radius: 100%;
+box-shadow: 0px 0px 10px 0px #eee;
+background: #fff;
+color: #232323;
+box-shadow: 0 0 10px rgb(23 23 23 / 15%);
+padding: 7px 10px;
+border: 1px solid #eee;
+}
+.activePagination {
+color: black !important;
+background-color: #fff !important;
+border-radius: 100%;
+box-shadow: 0px 0px 10px 0px #eee;
+background: #fff;
+color: #232323;
+box-shadow: 0 0 10px rgb(23 23 23 / 15%);
+padding: 7px 10px;
+border: 1px solid #eee; 
+}
+.paginacaoCursor:hover {
+color: black !important;
+}
+#beforePagination::before
+{
+    font-family: "FontAwesome" ;
+    color: #828282;
+    content: "\f060";   
+  
+}
+#afterPagination::before
+{
+    font-family: "FontAwesome" ;
+    color: #828282;
+    content: "\f061";   
+  
+}
+
+
+</style>
+<body>
+  
+    <ul class="paginationTable">
+        <li class="tableItem"> 1 </li>
+        <li class="tableItem"> 2 </li>
+        <li class="tableItem"> 3 </li>
+        <li class="tableItem"> 4 </li>
+        <li class="tableItem"> 5 </li>
+        <li class="tableItem"> 6 </li>
+        <li class="tableItem"> 7 </li>
+        <li class="tableItem"> 8 </li>
+        <li class="tableItem"> 9 </li>
+        <li class="tableItem"> 10 </li>
+        <li class="tableItem"> 11 </li>
+        <li class="tableItem"> 12 </li>
+        <li class="tableItem"> 13 </li>
+        <li class="tableItem"> 14 </li>
+        <li class="tableItem"> 15 </li>
+        <li class="tableItem"> 16 </li>
+        <li class="tableItem"> 1 </li>
+        <li class="tableItem"> 2 </li>
+        <li class="tableItem"> 3 </li>
+        <li class="tableItem"> 4 </li>
+        <li class="tableItem"> 5 </li>
+        <li class="tableItem"> 6 </li>
+        <li class="tableItem"> 7 </li>
+        <li class="tableItem"> 8 </li>
+        <li class="tableItem"> 9 </li>
+        <li class="tableItem"> 10 </li>
+        <li class="tableItem"> 11 </li>
+        <li class="tableItem"> 12 </li>
+        <li class="tableItem"> 13 </li>
+        <li class="tableItem"> 14 </li>
+        <li class="tableItem"> 15 </li>
+        <li class="tableItem"> 16 </li>
+        <li class="tableItem"> 10 </li>
+        <li class="tableItem"> 11 </li>
+        <li class="tableItem"> 12 </li>
+        <li class="tableItem"> 13 </li>
+        <li class="tableItem"> 14 </li>
+        <li class="tableItem"> 15 </li>
+        <li class="tableItem"> 16 </li>
+        <li class="tableItem"> 1 </li>
+        <li class="tableItem"> 2 </li>
+        <li class="tableItem"> 3 </li>
+        <li class="tableItem"> 4 </li>
+        <li class="tableItem"> 5 </li>
+        <li class="tableItem"> 6 </li>
+        <li class="tableItem"> 7 </li>
+        <li class="tableItem"> 8 </li>
+        <li class="tableItem"> 9 </li>
+        <li class="tableItem"> 10 </li>
+        <li class="tableItem"> 11 </li>
+        <li class="tableItem"> 12 </li>
+        <li class="tableItem"> 13 </li>
+        <li class="tableItem"> 14 </li>
+        <li class="tableItem"> 15 </li>
+        <li class="tableItem"> 16 </li>
+      </ul>
+      <div id="pagination-container">
+        <p class='paginacaoCursor' id="beforePagination"><i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i></p>
+        <p class='paginacaoCursor' id="afterPagination"></p>
+      </div>
+      <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous">
+    </script>
+      <script>
+$(document).ready(function(){
+
+var HZperPage = 4,//number of results per page
+   HZwrapper = 'paginationTable',//wrapper class
+   HZlines   = 'tableItem',//items class
+   HZpaginationId ='pagination-container',//id of pagination container
+   HZpaginationArrowsClass = 'paginacaoCursor',//set the class of pagination arrows
+  HZpaginationColorDefault='rgba(245, 245, 245, 0.616);',
+   HZpaginationColorActive = '#311b92', //color when page is clicked
+   HZpaginationCustomClass = 'customPagination'; //custom class for styling the pagination (css)
+
+
+function paginationShow(){if($("#"+HZpaginationId).children().length>8){var a=$(".activePagination").attr("data-valor");if(a>=4){var i=parseInt(a)-3,o=parseInt(a)+2;$(".paginacaoValor").hide(),exibir2=$(".paginacaoValor").slice(i,o).show()}else $(".paginacaoValor").hide(),exibir2=$(".paginacaoValor").slice(0,5).show()}}paginationShow(),$("#beforePagination").hide(),$("."+HZlines).hide();for(var tamanhotabela=$("."+HZwrapper).children().length,porPagina=HZperPage,paginas=Math.ceil(tamanhotabela/porPagina),i=1;i<=paginas;)$("#"+HZpaginationId).append("<p class='paginacaoValor "+HZpaginationCustomClass+"' data-valor="+i+">"+i+"</p>"),i++,$(".paginacaoValor").hide(),exibir2=$(".paginacaoValor").slice(0,5).show();$(".paginacaoValor:eq(0)").addClass("activePagination");var exibir=$("."+HZlines).slice(0,porPagina).show();$(".paginacaoValor").on("click",function(){$(".paginacaoValor").css("background",""+HZpaginationColorDefault).removeClass("activePagination"),$(this).addClass("activePagination");var a=$(this).attr("data-valor"),i=a*porPagina,o=i-porPagina;$("."+HZlines).hide(),exibir=$("."+HZlines).slice(o,i).show(),"1"===a?$("#beforePagination").hide():$("#beforePagination").show(),a===""+$(".paginacaoValor:last").attr("data-valor")?$("#afterPagination").hide():$("#afterPagination").show(),paginationShow()}),$(".paginacaoValor").last().after($("#afterPagination")),$("#beforePagination").on("click",function(){var a=$(".activePagination").attr("data-valor"),i=parseInt(a)-1;$("[data-valor="+i+"]").click(),paginationShow()}),$("#afterPagination").on("click",function(){var a=$(".activePagination").attr("data-valor"),i=parseInt(a)+1;$("[data-valor="+i+"]").click(),paginationShow()}),$(".paginacaoValor").css("float","left"),$("."+HZpaginationArrowsClass).css("float","left");
+})
+
+
+        </script>
+   
+</body>
+</html>
