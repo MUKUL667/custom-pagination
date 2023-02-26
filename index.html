@@ -60,8 +60,12 @@ color: black !important;
     content: "\f061";   
   
 }
+.pagination-container
+{
+  display: flex ;
+  align-items: center;
 
-
+}
 </style>
 <body>
   
@@ -134,7 +138,7 @@ color: black !important;
       <script>
 $(document).ready(function(){
 
-var HZperPage = 4,//number of results per page
+var HZperPage = 15,//number of results per page
    HZwrapper = 'paginationTable',//wrapper class
    HZlines   = 'tableItem',//items class
    HZpaginationId ='pagination-container',//id of pagination container
